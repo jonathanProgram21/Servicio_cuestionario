@@ -1,5 +1,6 @@
 package com.servicio.cuestionario.Repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,5 +21,8 @@ public interface RepoRespuestas extends JpaRepository<Respuestas, Long> {
     @Modifying
     @Query("UPDATE Respuestas r SET r.estatus = :estatus WHERE r.fkEvento.id = :eventoId")
     void updateEstatusByEventoId(Long eventoId, Estatus estatus);
+
+    @Query("SELECT r FROM Respuestas r WHERE r.fkEvento.id = :fkEvento")
+    List<Respuestas> findByFkEvento(Long fkEvento);
 
 }

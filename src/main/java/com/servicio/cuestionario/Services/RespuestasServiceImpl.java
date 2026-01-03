@@ -125,6 +125,19 @@ public class RespuestasServiceImpl implements IRespuestasService{
 
     }
 
+    @Override
+    public List<Respuestas> obtenerTodasRespuestas(Long eventoId) {
+
+        Evento evento = repoEvento.findById(eventoId)
+                .orElseThrow(() -> new RuntimeException("Evento no encontrado"));
+        
+        if (evento != null) {
+            return repoRespuesta.findByFkEvento(eventoId);
+        }else{
+            throw new RuntimeException("Evento no encontrado");
+        }
+    }
+
 
 
 }
