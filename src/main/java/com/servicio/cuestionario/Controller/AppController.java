@@ -22,14 +22,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
-
 @RestController
 @RequestMapping("/api/cuestionario")
 @CrossOrigin(
     origins = {
         "http://localhost:5173",
-        "https://servicio-cuestionario.onrender.com"
+        "https://front-cuestionario.vercel.app"
     }
 )
 public class AppController {
@@ -78,12 +76,5 @@ public class AppController {
     public List<Respuestas> obtenerRespuestas(@PathVariable Long eventoId) {
         return respuestasService.obtenerTodasRespuestas(eventoId);
     }
-    
-
-    
-    
-    
-
-    
     
 }
